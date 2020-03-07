@@ -6,7 +6,7 @@ all: play
 
 
 %.o: %.cpp 
-	$(CXX) -c $< -o $@ -I ~/learn_c/SFML-2.5.1/include
+	$(CXX) -c $< -o $@ -I ~/learn_c/SFML-2.5.1/include -I include
 
 
 play: *.o
