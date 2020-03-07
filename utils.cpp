@@ -1,4 +1,4 @@
-#include<utils.h>
+#include <utils.h>
 using namespace sf;
 using namespace std;
 
@@ -49,12 +49,12 @@ bool is_hero_fall(double v_Hero)
 }
 
 
-double if_connect_then_jump(const int count_platform,double v_Hero,Sound &sound,Sprite &hero,Platform *platform){
+double if_connect_then_jump(GameState &game,const int count_platform,double v_Hero,Sound &sound,Sprite &hero,Platform *platform){
   for(int i=0;i<count_platform;i++)
     {
       if((is_it_meet(hero,platform[i]))&&(is_hero_fall(v_Hero)) )
       { if(platform[i].type==0){
-        algor=50;}
+        game.algor=50;}
         v_Hero=8;
         sound.play();
       }
@@ -99,14 +99,14 @@ void if_upper_screen_min_then_do(const int count_platform,Platform *platform,Ren
 
 
 
-void draw(int count_platform,int r1,Sprite fone,Sprite fone1,Sprite fone2,Sprite hero,Platform *platform,Text text,RenderWindow &window, int a1,int a2, int a3, int a4)
+void draw(GameState &game,int count_platform,int r1,Sprite fone,Sprite fone1,Sprite fone2,Sprite hero,Platform *platform,Text text,RenderWindow &window, int a1,int a2, int a3, int a4)
 {
     window.clear();
     window.draw(fone2);
     window.draw(fone);
     window.draw(fone1);
     for(int i=0;i<count_platform;i++)
-    {   if((algor>0) or (platform[i].type==2)){
+    {   if((game.algor>0) or (platform[i].type==2)){
       platform[i].move();
       
       }
@@ -118,5 +118,5 @@ void draw(int count_platform,int r1,Sprite fone,Sprite fone1,Sprite fone2,Sprite
     window.draw(hero);
     window.draw(text);
     window.display();
-    algor--;
+    game.algor--;
 }

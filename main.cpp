@@ -10,21 +10,16 @@
 #include<cmath>
 #include<utils.h>
 #include<platform.h>
-#include<main.h>
+#include<gamestate.h>
 using namespace sf;
 using namespace std;
-
-
-
-
-
-
 int main()
 {
   srand(static_cast<unsigned int>(time(nullptr)));
   const auto fps = 60.0f; // The number of updates each second
   const int count_platform=40;
   //h
+  GameState game;
   float horisontal_speed = 0;
   int window_width = 450;
   int window_height = 700;
@@ -124,7 +119,7 @@ int main()
     }
 herox=hero.getPosition().x;
     heroy=hero.getPosition().y;
-    v_Hero = if_connect_then_jump(count_platform,v_Hero, sound,hero,platform);        
+    v_Hero = if_connect_then_jump(game,count_platform,v_Hero, sound,hero,platform);        
     move_hero(count_platform,platform,v_Hero,fone,fone1);
     if_out_of_screen(hero);
     while (window.pollEvent(ev))
@@ -173,7 +168,7 @@ herox=hero.getPosition().x;
     score += 1;
 
     hero.move(horisontal_speed, 0);
-    draw(count_platform,r1,fone,fone1,fone2,hero,platform,text,window,0+count_iterration,10000-count_iterration,0+count_iterration,0);
+    draw(game,count_platform,r1,fone,fone1,fone2,hero,platform,text,window,0+count_iterration,10000-count_iterration,0+count_iterration,0);
     count_iterration++;
     v_Hero-=gravity;
     if_upper_screen_min_then_do(count_platform,platform,window);
