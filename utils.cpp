@@ -38,7 +38,7 @@ bool is_it_meet(Sprite &hero, Platform &platform)
 {
 int herox=hero.getPosition().x;
 int heroy=hero.getPosition().y;
-return (( (abs(platform.x-herox)<50)) and ((platform.y-(heroy)<70)and (platform.y-(heroy)>60))); 
+return (( ((platform.x-herox)<70) and ((platform.x-herox)>-30) ) and ((platform.y-(heroy)<70)and (platform.y-(heroy)>60))); 
 
 }
 
